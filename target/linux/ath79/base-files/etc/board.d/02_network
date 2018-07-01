@@ -29,6 +29,7 @@ ath79_setup_interfaces()
 	pisen,wmb001n|\
 	pisen,wmm003n|\
 	pqi,air-pen|\
+	tplink,eap245-v1|\
 	tplink,cpe210-v2|\
 	tplink,cpe210-v3|\
 	tplink,cpe510-v2|\
