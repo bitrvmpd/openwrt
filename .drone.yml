@@ -1,0 +1,44 @@
+---
+kind: pipeline
+name: OpenWRT for EAP245 Waffo's mod
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  build:
+    image: bitrvmpd/image-builder
+    context: .
+    dockerfile: Dockerfile
+
+- name: Fetch and build OpenWRT
+  image: bitrvmpd/image-builder
+  commands:
+  - useradd -m -d /home/buildbot -U -s /bin/bash -u 20001 buildbot
+  - mkdir -p /usr/src/openwrt-eap245-lobo
+  - ./scripts/feeds update -a
+  - ./scripts/feeds install -a
+  - wget -O ".config" https://gist.githubusercontent.com/FoxBuru/11c80bff55b58c47f3de2ec5ff57eb12/raw/1c35a6d5d5499e5c8251e90baf8d9b04401b2f76/config-eap245v1
+  - make defconfig
+  - make download
+  - chown -R buildbot:buildbot .
+  - su --preserve-environment -c "make -j$(nproc)" buildbot
+  - cp -r bin/* /usr/src/openwrt-eap245-lobo
+  volumes:
+  - name: cache
+    path: /usr/src
+
+volumes:
+- name: cache
+  host:
+    path: /usr/src
+
+trigger:
+  branch:
+  - eap245-v1
+  event:
+  - push
+
+...
