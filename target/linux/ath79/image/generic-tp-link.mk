@@ -180,6 +180,7 @@ define Device/tplink_eap245-v1
   TPLINK_BOARD_ID := EAP245_V1
   DEVICE_PACKAGES := kmod-ath10k-ct ath10k-firmware-qca988x-ct
   SUPPORTED_DEVICES += tplink,eap245-v1 eap245-v1
+  KERNEL := kernel-bin | append-dtb | lzma | loader-kernel
 endef
 TARGET_DEVICES += tplink_eap245-v1
 
