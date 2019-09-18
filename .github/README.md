@@ -23,7 +23,7 @@ For connecting via serial try these values:
 - Parity: None
 - Flow Control: None
 
-Binaries will be available soon
+> Downloads: https://sourceforge.net/projects/openwrt-eap245-v1/files/
 
 ------
 
