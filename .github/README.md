@@ -7,7 +7,7 @@ Mine was: ` bootcmd=bootelf 0x9F040000`
 
 IF yours has something like `bootcmd=bootm 0x9f040000`
 
-**revert this commit** or change it: run this command in u-boot via serial 
+[**revert this commit**](https://github.com/bitrvmpd/openwrt/commit/dbf5230641cafc822cb70ab70c465dbac232c015) or change the value of **bootcmd**: run this command in u-boot via serial 
 
 ```
 setenv bootcmd bootelf 0x9f040000
